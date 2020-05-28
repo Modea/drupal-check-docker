@@ -1,10 +1,13 @@
 FROM php:7.3-alpine
 
-ARG VERSION=1.0.14
+ARG VERSION=1.1.2
 
-RUN curl -O -L https://github.com/mglaman/drupal-check/releases/download/${VERSION}/drupal-check.phar \
-    && mv drupal-check.phar /usr/local/bin/drupal-check \
-    && chmod +x /usr/local/bin/drupal-check
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY config/drupal-check.ini /usr/local/etc/php/conf.d
+
+RUN composer global require mglaman/drupal-check:${VERSION}
+
+ENV PATH "$PATH:/root/.composer/vendor/bin"
 
 WORKDIR /app
 
