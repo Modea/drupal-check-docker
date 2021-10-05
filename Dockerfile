@@ -1,6 +1,6 @@
-FROM php:7.3-alpine
+FROM php:7.4-alpine
 
-ARG VERSION=1.1.2
+ARG VERSION=1.1.10
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY config/drupal-check.ini /usr/local/etc/php/conf.d
