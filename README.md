@@ -27,3 +27,30 @@ drupal-check path/to/custom/modules
 ```
 docker pull modea/drupal-check
 ```
+
+## Update image on Docker Hub
+**Requirements:** Must have a user account on Docker Hub with write permission on modea/drupal-check.
+
+Build image
+
+```
+docker build -t modea/drupal-check .
+```
+
+Create new tag. Version number should track the `drupal-check` version. Example if using `drupal-check` 1.1.10, then tag image with 1.1.10.
+
+```
+docker tag modea/drupal-check modea/drupal-check:1.1.10
+```
+
+Push tag to Docker Hub
+
+```
+docker push modea/drupal-check:1.1.10
+```
+
+Push latest to Docker Hub
+
+```
+docker push modea/drupal-check
+```
