@@ -31,26 +31,20 @@ docker pull modea/drupal-check
 ## Update image on Docker Hub
 **Requirements:** Must have a user account on Docker Hub with write permission on modea/drupal-check.
 
-Build image
+Build local image
 
 ```
 docker build -t modea/drupal-check .
 ```
 
-Create new tag. Version number should track the `drupal-check` version. Example if using `drupal-check` 1.1.10, then tag image with 1.1.10.
+Build and publish multi-arch image to Docker Hub
 
 ```
-docker tag modea/drupal-check modea/drupal-check:1.1.10
+docker buildx build --platform linux/amd64,linux/arm64 --push -t modea/drupal-check
 ```
 
-Push tag to Docker Hub
+Build and publish tagged multi-arch image to Docker HUb
 
 ```
-docker push modea/drupal-check:1.1.10
-```
-
-Push latest to Docker Hub
-
-```
-docker push modea/drupal-check
+docker buildx build --platform linux/amd64,linux/arm64 --push -t modea/drupal-check:1.3.2 .
 ```
