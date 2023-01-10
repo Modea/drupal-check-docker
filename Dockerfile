@@ -1,4 +1,4 @@
-FROM php:7.4-alpine
+FROM php:8.2-alpine
 
 ARG VERSION=1.3.2
 
